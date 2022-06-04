@@ -1,0 +1,4 @@
+.profile__page {
+  @apply container mx-auto px-6 pt-6;
+}
+

@@ -1,0 +1,32 @@
+.dash__graphs{
+  @apply grid gap-6 w-full;
+}
+
+.dash__graph{
+  @apply rounded-xl w-full overflow-hidden;
+}
+
+.dash__graph h1{
+  @apply text-sm text-gray-500;
+}
+
+.dash__graph .icon{
+  @apply relative w-12 h-12 px-10;
+}
+
+.dash__graph h5{
+  @apply ml-2 text-gray-500;
+}
+
+
+.dash__graph h6{
+  @apply ml-2 text-gray-400;
+}
+
+.dash__graph section{
+  @apply flex border-b border-gray-200 py-3;
+}
+
+.dash__graph section:last-child{
+  @apply flex border-0;
+}
