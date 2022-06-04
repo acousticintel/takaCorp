@@ -13,40 +13,40 @@ export default function History() {
             <span className="w-1/5 text-right">Recycled</span>
           </div>
           <div className="text-gray-500">
-            <div class="collapse">
+            <div className="collapse">
               <input type="checkbox" />
-              <div class="collapse-title text-xl flex justify-between">
+              <div className="collapse-title text-xl flex justify-between">
                 <span className="w-2/5">Friday 3rd May 2022</span>
                 <span className="w-2/5 text-center">56 Kg</span>
                 <span className="w-1/5 text-right">70%</span>
               </div>
-              <div class="collapse-content">
+              <div className="collapse-content">
                 <GraphSec />
               </div>
             </div>
           </div>
           <div className="text-gray-500">
-            <div class="collapse">
+            <div className="collapse">
               <input type="checkbox" />
-              <div class="collapse-title text-xl flex justify-between">
+              <div className="collapse-title text-xl flex justify-between">
                 <span className="w-2/5">Friday 3rd April 2022</span>
                 <span className="w-2/5 text-center">42 Kg</span>
                 <span className="w-1/5 text-right">70%</span>
               </div>
-              <div class="collapse-content">
+              <div className="collapse-content">
                 <GraphSec />
               </div>
             </div>
           </div>
           <div className="text-gray-500">
-            <div class="collapse">
+            <div className="collapse">
               <input type="checkbox" />
-              <div class="collapse-title text-xl flex justify-between">
+              <div className="collapse-title text-xl flex justify-between">
                 <span className="w-2/5">Friday 3rd March 2022</span>
                 <span className="w-2/5 text-center">54 Kg</span>
                 <span className="w-1/5 text-right">70%</span>
               </div>
-              <div class="collapse-content">
+              <div className="collapse-content">
                 <GraphSec />
               </div>
             </div>

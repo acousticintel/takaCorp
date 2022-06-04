@@ -16,7 +16,7 @@ export function AuthGuard({ children }) {
         Router.push(pathname);
       }
     }
-  }, [status, Router, session]);
+  }, [status, session]);
 
   /* show loading indicator while the auth provider is still initializing */
   if (status === 'loading') {

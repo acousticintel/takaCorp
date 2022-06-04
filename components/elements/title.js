@@ -51,7 +51,7 @@ export default function Title({ title }) {
       className="flex relative"
     >
       <motion.div variants={scaleVar} className="absolute -bottom-2 -left-3">
-        <Image src="/assets/leaf.webp" height={20} width={35} />
+        <Image src="/assets/leaf.webp" height={20} width={35} alt=""/>
       </motion.div>
       <motion.span variants={slideVar} className="text-2xl text-green-600 ml-5">
         {title}
