@@ -3,18 +3,18 @@ import { AuthGuard } from "../../components/elements/authGuard";
 import BarG from "../../components/graphSec/barG";
 
 export default function GlassBreakdown() {
-  const paperData = [
+  const glassData = [
     {
       name: "Cullet",
       data: [85, 90, 92, 93],
     },
   ];
-  const paperWData = {
-    series: paperData,
+  const glassWData = {
+    series: glassData,
     options: {
       colors: ["#22c55e"],
       chart: {
-        height: "96em",
+        height: "100%",
         type: "bar",
         stacked: true,
       },
@@ -73,10 +73,11 @@ export default function GlassBreakdown() {
       <main className="breakdown__page">
         <h1>Glass Recycling</h1>
         <p>
-          Glass that is crushed or imploded and ready to be remelted is called cullet. Glass doent have propotions since its all recyled similary.
+          Glass that is crushed or imploded and ready to be remelted is called
+          cullet. Glass doent have propotions since its all recyled similary.
         </p>
         <section className="single">
-          <BarG data={paperWData} />
+          <BarG data={glassWData} />
         </section>
       </main>
     </AuthGuard>

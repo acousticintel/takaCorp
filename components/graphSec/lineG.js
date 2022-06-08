@@ -3,6 +3,7 @@ import dynamic from "next/dynamic";
 
 export default function LineG() {
   const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
+  
   const [data, setData] = useState({
     series: [
       {
@@ -57,6 +58,11 @@ export default function LineG() {
           format: "MMM",
         },
       },
+      legend: {
+        position: "top",
+        horizontalAlign: "center",
+        offsetX: 40,
+      },
     },
   });
 
@@ -69,7 +75,7 @@ export default function LineG() {
             series={data.series}
             type="area"
             width="100%"
-            height="500px"
+            height="350px"
           />
         )}
       </div>

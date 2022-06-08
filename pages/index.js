@@ -6,9 +6,10 @@ import { useSession } from "next-auth/react";
 //custom func
 import { AuthGuard } from "../components/elements/authGuard";
 //custom
-import Stats from "../components/stats";
+import Stats from "../components/stats/totalStats";
 import LineG from "../components/graphSec/lineG";
 import Categories from "../components/categories";
+import Recent from "../components/events/recent";
 
 const contVar = {
   hide: {},
@@ -43,17 +44,18 @@ export default function Profile() {
   return (
     <AuthGuard>
       <motion.div
-        className="profile__page"
+        className="dash__page"
         variants={contVar}
         initial="hide"
         animate="show"
       >
         <motion.h5 variants={riseVar}>Hello {session?.user.name}</motion.h5>
+        <Recent/>
         <Stats />
         <Categories />
-        <div className="dash__linegraph">
+        <section className="dash__linegraph">
           <LineG />
-        </div>
+        </section>
       </motion.div>
     </AuthGuard>
   );

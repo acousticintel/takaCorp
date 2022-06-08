@@ -3,18 +3,15 @@
 }
 
 .breakdown__page > section{
-  min-width: 500px;
   @apply my-10 grid gap-6 grid-cols-1 lg:grid-cols-2;
 }
 
 .breakdown__page > section.single{
-  min-width: 500px;
   @apply grid-cols-1;
 }
 
 .breakdown__page > section > div{
-  min-width: 500px;
-  @apply bg-white rounded-3xl p-8 overflow-hidden ;
+  @apply bg-white rounded-3xl p-8 overflow-hidden;
 }
 
 .breakdown__page > h1{

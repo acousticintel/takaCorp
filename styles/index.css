@@ -1,4 +1,11 @@
-.profile__page {
+.dash__page {
   @apply container mx-auto px-6 pt-6;
 }
 
+.dash__page > section {
+  @apply bg-white rounded-3xl px-6 py-10 my-6;
+}
+
+.dash__page > section.clear {
+  @apply bg-transparent rounded-3xl px-6 py-10 my-6;
+}
