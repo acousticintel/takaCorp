@@ -33,7 +33,7 @@ export default function EventG() {
             />
           </div>
           <div className="w-full">
-            <div tabindex="0" className="collapse">
+            <div tabIndex="0" className="collapse">
               <div className="collapse-title p-0 pr-2">
                 <div className="w-full">
                   <div className="flex items-end justify-between">
@@ -93,7 +93,7 @@ export default function EventG() {
             />
           </div>
           <div className="w-full">
-            <div tabindex="0" className="collapse">
+            <div tabIndex="0" className="collapse">
               <div className="collapse-title p-0 pr-2">
                 <div className="w-full">
                   <div className="flex items-end justify-between">
@@ -132,7 +132,7 @@ export default function EventG() {
             />
           </div>
           <div className="w-full">
-            <div tabindex="0" className="collapse">
+            <div tabIndex="0" className="collapse">
               <div className="collapse-title p-0 pr-2">
                 <div className="w-full">
                   <div className="flex items-end justify-between">
