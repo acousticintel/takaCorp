@@ -17,8 +17,8 @@ export default function EventG() {
           </div>
           <div className="w-full">
             <div className="flex items-end justify-between">
-              <h5>Glass</h5>
-              <h6>77.98% - 467.87kg</h6>
+              <h5 className="font-medium">Glass</h5>
+              <h6 className="font-medium">77.98% - 467.87kg</h6>
             </div>
             <ProgressBar color="teal" value={78} />
           </div>
@@ -172,8 +172,8 @@ export default function EventG() {
           </div>
           <div className="w-full">
             <div className="flex items-end justify-between">
-              <h5>Organic</h5>
-              <h6>1.79% - 10.76kg</h6>
+              <h5 className="font-medium">Organic</h5>
+              <h6 className="font-medium">1.79% - 10.76kg</h6>
             </div>
             <ProgressBar color="slate" value={1} />
           </div>
@@ -189,8 +189,8 @@ export default function EventG() {
           </div>
           <div className="w-full">
             <div className="flex items-end justify-between">
-              <h5>Non-Recyclables </h5>
-              <h6>6.47% - 38.83kg</h6>
+              <h5 className="font-medium">Non-Recyclables </h5>
+              <h6 className="font-medium">6.47% - 38.83kg</h6>
             </div>
             <ProgressBar color="red" value={7} />
           </div>
