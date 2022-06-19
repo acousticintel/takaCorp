@@ -1,40 +1,63 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 
-export default function LineG() {
+export default function LineG({ events }) {
   const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
-  
-  const [data, setData] = useState({
-    series: [
-      {
-        name: "Glass",
-        data: [50, 45, 63, 78, 75, 62, 80],
-      },
-      {
-        name: "Plastic",
-        data: [11, 32, 45, 35, 47, 52, 61],
-      },
-      {
-        name: "Metal",
-        data: [5, 20, 8, 15, 30, 18, 41],
-      },
-      {
-        name: "Paper",
-        data: [5, 20, 8, 15, 30, 18, 41],
-      },
-      {
-        name: "Electronics",
-        data: [0, 0, 0, 1, 3, 2, 4],
-      },
-      {
-        name: "Organic",
-        data: [1, 5, 5, 6, 8, 10, 11],
-      },
-      {
-        name: "Non-Recyclables",
-        data: [5, 3, 8, 6, 3, 8, 10],
-      },
-    ],
+  const [dynamicData, setDynamicData] = useState([]);
+
+  useEffect(() => {
+    if (events.length > 0) {
+      let chartD = [];
+      events.map((event) => {
+        Object.entries(event).map(([key, value]) => {
+          if (
+            key !== "name" &&
+            key !== "location" &&
+            key !== "timestamp" &&
+            key !== "image" &&
+            key !== "total" &&
+            key !== "id"
+          ) {
+            chartD.push({
+              name: key,
+              data: value,
+            });
+          }
+        });
+      });
+      console.log(chartD);
+
+      const newList = chartD.reduce((items, item) => {
+        const { name, data } = item;
+        const itemIndex = items.findIndex((item) => item.name === name);
+        if (itemIndex === -1) {
+          item.data = [0, data];
+          items.push(item);
+        } else {
+          items[itemIndex].data = [...items[itemIndex].data, data];
+        }
+
+        return items;
+      }, []);
+
+      //sort new list by name
+      const sortedList = newList.sort((a, b) => {
+        if (a.name < b.name) {
+          return -1;
+        }
+        if (a.name > b.name) {
+          return 1;
+        }
+        return 0;
+      });
+
+      //console.log(sortedList);
+      setDynamicData(sortedList);
+    }
+  }, [events]);
+
+  const data = {
+    series: dynamicData,
     options: {
       title: {
         text: "Total Waste Collected by Category",
@@ -46,12 +69,20 @@ export default function LineG() {
       dataLabels: {
         enabled: false,
       },
-      colors: ['#14b8a6', '#f97316', '#facc15','#3b82f6', '#a855f7', '#64748b', '#ef4444'],
+      colors: [
+        "#fb923c",
+        "#14b8a6",
+        "#facc15",  
+        "#ef4444",
+        "#6b7280",  
+        "#38bdf8",
+        "#fb923c",
+      ],
       stroke: {
         curve: "smooth",
       },
       xaxis: {
-        categories: ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar", "Apr"],
+        categories: ["Apr", "May", "Jun"],
       },
       tooltip: {
         x: {
@@ -64,7 +95,7 @@ export default function LineG() {
         offsetX: 40,
       },
     },
-  });
+  };
 
   return (
     <div className=" relative h-full">
@@ -81,4 +112,4 @@ export default function LineG() {
       </div>
     </div>
   );
-};
+}

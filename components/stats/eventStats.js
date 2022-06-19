@@ -1,7 +1,7 @@
 //custom
 import { useData } from "../../context/dataContext";
 
-export default function EventsStats() {
+export default function EventsStats({total}) {
   const { users, requests, onSetSelRequest } = useData();
   return (
     <div className="overflow-hidden grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -11,7 +11,7 @@ export default function EventsStats() {
       </div>
       <div className="stat">
         <h6>Total Waste</h6>
-        <h5>600 kg</h5>
+        <h5>{total} kg</h5>
       </div>
       <div className="stat">
         <h6>Incentives</h6>
