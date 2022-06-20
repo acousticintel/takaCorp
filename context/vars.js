@@ -15,6 +15,5 @@ export const routes = [
     ],
   },
   { name: "History", route: "/history" },
-  { name: "Entry", route: "/entry" , protect: true},
   { name: "Sign Out", route: "/" },
 ];
