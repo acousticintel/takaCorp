@@ -16,6 +16,8 @@ import EventG from "../../components/graphSec/eventG";
 import EventsStats from "../../components/stats/eventStats";
 import { db } from "../../firebase";
 import CleanUpStats from "../../components/stats/cleanUpStats";
+import Head from "next/head";
+import Image from "next/image";
 
 export default function EventPage({ eventInit }) {
   const router = useRouter();
@@ -54,6 +56,20 @@ export default function EventPage({ eventInit }) {
 
   return (
     <main className="events__page">
+      <Head>
+        <title>{eventData.name} Waste Profile</title>
+      </Head>
+      <div className="flex flex-col sm:flex-row items-center justify-center">
+        <div class="avatar">
+        <div class="w-24 mask mask-squircle">
+            {eventData?.image && <Image src={eventData.image} layout="fill" />}
+          </div>
+        </div>
+        <h1 className="mt-6 sm:ml-6 sm:mt-0 uppercase text-4xl font-bold text-teal-700">
+          {eventData.name} <br />
+          Waste Profile
+        </h1>
+      </div>
       <div className="event__details">
         <>
           <div className="detail">
@@ -77,7 +93,7 @@ export default function EventPage({ eventInit }) {
           </div>
           <div className="detail">
             {" "}
-            <span>Division: </span> <h6>Nairobi</h6>
+            <span> NEMA approval number: </span> <h6>{eventData?.nema ? eventData.nema : "NEMA/--/-/VOL.-----" }</h6>
           </div>
         </>
       </div>
