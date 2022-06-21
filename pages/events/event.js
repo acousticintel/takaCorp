@@ -60,8 +60,8 @@ export default function EventPage({ eventInit }) {
         <title>{eventData.name} Waste Profile</title>
       </Head>
       <div className="flex flex-col sm:flex-row items-center justify-center">
-        <div class="avatar">
-        <div class="w-24 mask mask-squircle">
+        <div className="avatar">
+        <div className="w-24 mask mask-squircle">
             {eventData?.image && <Image src={eventData.image} layout="fill" />}
           </div>
         </div>
