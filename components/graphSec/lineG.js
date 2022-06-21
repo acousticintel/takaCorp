@@ -17,6 +17,11 @@ export default function LineG({ events }) {
             key !== "image" &&
             key !== "image" &&
             key !== "total" &&
+            key !== "pet" &&
+            key !== "ldpe" &&
+            key !== "hdpe" &&
+            key !== "pp" &&
+            key !== "ps" &&
             key !== "id"
           ) {
             chartD.push({

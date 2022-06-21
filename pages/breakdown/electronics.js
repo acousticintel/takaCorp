@@ -6,20 +6,20 @@ export default function PlasticBreakdown() {
   const elecData = [
     {
       name: "Phones",
-      data: [2, 0, 3, 0],
+      data: [3, 0],
     },
     {
       name: "Laptops/PC",
-      data: [0, 2, 3, 1],
+      data: [3, 1],
     },
     {
       name: "Home Appliances",
-      data: [5, 1, 2, 3],
+      data: [2, 3],
     },
     {
       name: "Other",
-      data: [3, 5, 6, 10],
-    }
+      data: [6, 10],
+    },
   ];
   const elecWData = {
     series: elecData,
@@ -50,7 +50,7 @@ export default function PlasticBreakdown() {
         },
       },
       xaxis: {
-        categories: ["Jan", "Feb", "Mar", "Apr"],
+        categories: ["May", "Jun"],
         labels: {
           formatter: function (val) {
             return val + "Kg";
@@ -109,7 +109,7 @@ export default function PlasticBreakdown() {
         },
       },
       xaxis: {
-        categories: ["Jan", "Feb", "Mar", "Apr"],
+        categories: ["May", "Jun"],
       },
       yaxis: {
         title: {
@@ -135,20 +135,18 @@ export default function PlasticBreakdown() {
   };
 
   return (
-    <AuthGuard>
-      <main className="breakdown__page">
-        <h1>Electronics Recycling</h1>
-        <p>
-          Recycling electronics is an often challenging activity. This is
-          because e-scraps are typically sophisticated and manufactured from
-          diverse elements such as metals, plastics, and glass. While this
-          process often varies, there is a general process.
-        </p>
-        <section>
-          <BarG data={elecWData} />
-          <BarG data={elecPData} />
-        </section>
-      </main>
-    </AuthGuard>
+    <main className="breakdown__page">
+      <h1>Electronics Recycling</h1>
+      <p>
+        Recycling electronics is an often challenging activity. This is because
+        e-scraps are typically sophisticated and manufactured from diverse
+        elements such as metals, plastics, and glass. While this process often
+        varies, there is a general process.
+      </p>
+      <section>
+        <BarG data={elecWData} />
+        <BarG data={elecPData} />
+      </section>
+    </main>
   );
 }

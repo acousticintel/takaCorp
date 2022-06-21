@@ -6,23 +6,23 @@ export default function PlasticBreakdown() {
   const plasticData = [
     {
       name: "PET",
-      data: [130, 142, 141, 145],
+      data: [130, 142],
     },
     {
       name: "LDPE",
-      data: [29, 32, 33, 41],
+      data: [29, 32],
     },
     {
       name: "HDPE",
-      data: [51, 53, 54, 56],
+      data: [51, 53],
     },
     {
       name: "PP",
-      data: [95, 99, 108, 111],
+      data: [95, 99],
     },
     {
       name: "PS",
-      data: [30, 38, 35, 37],
+      data: [30, 38],
     },
   ];
   const plasticWData = {
@@ -139,23 +139,21 @@ export default function PlasticBreakdown() {
   };
 
   return (
-    <AuthGuard>
-      <main className="breakdown__page">
-        <h1>Plastic Recycling</h1>
-        <p>
-          Presently, almost all recycling is performed by remelting and
-          reforming used plastic into new items; so-called mechanical recycling.
-          This can cause polymer degradation at a chemical level, and also
-          requires that waste be sorted by both colour and polymer type before
-          being reprocessed, which is complicated and expensive. Failures in
-          this can lead to material with inconsistent properties, rendering it
-          unappealing to industry.
-        </p>
-        <section>
-          <BarG data={plasticWData} />
-          <BarG data={plasticPData} />
-        </section>
-      </main>
-    </AuthGuard>
+    <main className="breakdown__page">
+      <h1>Plastic Recycling</h1>
+      <p>
+        Presently, almost all recycling is performed by remelting and reforming
+        used plastic into new items; so-called mechanical recycling. This can
+        cause polymer degradation at a chemical level, and also requires that
+        waste be sorted by both colour and polymer type before being
+        reprocessed, which is complicated and expensive. Failures in this can
+        lead to material with inconsistent properties, rendering it unappealing
+        to industry.
+      </p>
+      <section>
+        <BarG data={plasticWData} />
+        <BarG data={plasticPData} />
+      </section>
+    </main>
   );
 }

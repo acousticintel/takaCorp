@@ -58,7 +58,7 @@ export default function Profile({ userDataInit, companyDataInit }) {
     userDataInit ? JSON.parse(userDataInit) : {}
   );
   const [companyData, setCompanyData] = useState(
-    companyDataInit ? JSON.parse(companyDataInit) : {}
+    companyDataInit && !company ? JSON.parse(companyDataInit) : {}
   );
 
   const [eventsData, setEventsData] = useState({});
@@ -83,8 +83,7 @@ export default function Profile({ userDataInit, companyDataInit }) {
       ),
       limit(1)
     );
-
-    getDocs(q).then((querySnapshot) => {
+    return onSnapshot(q, (querySnapshot) => {
       let c = {};
       querySnapshot.forEach((doc) => {
         c = { ...doc.data(), id: doc.id };
@@ -98,14 +97,16 @@ export default function Profile({ userDataInit, companyDataInit }) {
     if (companyData?.id) {
       //firebase listener for user data
       const q = query(
-        collection(db, "wasteProfiles", companyData.id, "events"),
+        collection(db, "wasteProfiles", `${companyData.id}`, "events"),
         where("name", "!=", null)
       );
+
       return onSnapshot(q, (querySnapshot) => {
         const e = [];
         querySnapshot.forEach((doc) => {
           e.push({ ...doc.data(), id: doc.id });
         });
+
         setEventsData(e);
       });
     }
@@ -117,8 +118,8 @@ export default function Profile({ userDataInit, companyDataInit }) {
   }, [company]);
 
   useEffect(() => {
-    let u = {};
     if (session?.user?.id) {
+      let u = {};
       const docRef = doc(db, "users", session?.user?.id);
       getDoc(docRef).then((doc) => {
         u = { ...doc.data(), id: doc.id };
@@ -128,7 +129,7 @@ export default function Profile({ userDataInit, companyDataInit }) {
   }, [session]);
 
   useEffect(() => {
-    //console.log("company", companyData);
+    //console.log("companyData", companyData);
     getEventData(companyData);
   }, [companyData]);
 
@@ -141,6 +142,8 @@ export default function Profile({ userDataInit, companyDataInit }) {
     if (eventsData?.length > 0) {
       let t = sumObjectsByKey(...eventsData);
       setTotal(t);
+    } else {
+      setTotal({});
     }
   }, [eventsData]);
 
@@ -170,17 +173,7 @@ export default function Profile({ userDataInit, companyDataInit }) {
           {companyName(companyData.name)} Waste Profile
         </h1>
       </div>
-
-      {userData?.role === "admin" || userData?.company?.name === "pernod" ? (
-        <Recent events={eventsData} company={companyData} />
-      ) : (
-        <div className="dash__page__no-access">
-          <h6 className="text-xl text-center text-gray-500 my-20">
-            To avoid showing sensitive information. <br />
-            You must sign in to view events data
-          </h6>
-        </div>
-      )}
+      <Recent events={eventsData} company={companyData} />
       <Stats total={total?.total} non={total?.non} />
       <Categories />
       <section className="dash__linegraph">
@@ -195,7 +188,7 @@ export const getServerSideProps = async (context) => {
 
     const q = query(
       collection(db, "users"),
-      where("email", "==", session?.user?.email),
+      where("email", "==", session?.user?.email || ""),
       limit(1)
     );
     const querySnapshot = await getDocs(q);
@@ -207,7 +200,7 @@ export const getServerSideProps = async (context) => {
 
     const q1 = query(
       collection(db, "wasteProfiles"),
-      where("name", "==", tmpUser?.company),
+      where("name", "==", tmpUser?.company || "demo"),
       limit(1)
     );
     const querySnapshot1 = await getDocs(q1);

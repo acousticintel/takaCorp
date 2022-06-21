@@ -6,11 +6,11 @@ export default function PlasticBreakdown() {
   const paperData = [
     {
       name: "Tetra pack",
-      data: [85, 90, 92, 93],
+      data: [85, 90],
     },
     {
       name: "Carton",
-      data: [158, 155, 160, 167],
+      data: [158, 155],
     },
   ];
   const paperWData = {
@@ -42,7 +42,7 @@ export default function PlasticBreakdown() {
         },
       },
       xaxis: {
-        categories: ["Jan", "Feb", "Mar", "Apr"],
+        categories: ["May", "Jun"],
         labels: {
           formatter: function (val) {
             return val + "Kg";
@@ -101,7 +101,7 @@ export default function PlasticBreakdown() {
         },
       },
       xaxis: {
-        categories: ["Jan", "Feb", "Mar", "Apr"],
+        categories: ["May", "Jun"],
       },
       yaxis: {
         title: {
@@ -127,21 +127,19 @@ export default function PlasticBreakdown() {
   };
 
   return (
-    <AuthGuard>
-      <main className="breakdown__page">
-        <h1>Paper Recycling</h1>
-        <p>
-          The metal recycling process is similar to the usual recycling process.
-          The metals are first sorted on the basis or their properties. It is,
-          however, important to have a basic understanding or knowledge about
-          metals. This will help in recycling them and keeping a green
-          environment.
-        </p>
-        <section>
-          <BarG data={paperWData} />
-          <BarG data={paperPData} />
-        </section>
-      </main>
-    </AuthGuard>
+    <main className="breakdown__page">
+      <h1>Paper Recycling</h1>
+      <p>
+        The metal recycling process is similar to the usual recycling process.
+        The metals are first sorted on the basis or their properties. It is,
+        however, important to have a basic understanding or knowledge about
+        metals. This will help in recycling them and keeping a green
+        environment.
+      </p>
+      <section>
+        <BarG data={paperWData} />
+        <BarG data={paperPData} />
+      </section>
+    </main>
   );
 }

@@ -6,7 +6,7 @@ export default function GlassBreakdown() {
   const glassData = [
     {
       name: "Cullet",
-      data: [85, 90, 92, 93],
+      data: [92, 93],
     },
   ];
   const glassWData = {
@@ -39,7 +39,7 @@ export default function GlassBreakdown() {
         },
       },
       xaxis: {
-        categories: ["Jan", "Feb", "Mar", "Apr"],
+        categories: ["May", "Jun"],
         labels: {
           formatter: function (val) {
             return val + "Kg";
@@ -69,17 +69,15 @@ export default function GlassBreakdown() {
     },
   };
   return (
-    <AuthGuard>
-      <main className="breakdown__page">
-        <h1>Glass Recycling</h1>
-        <p>
-          Glass that is crushed or imploded and ready to be remelted is called
-          cullet. Glass doent have propotions since its all recyled similary.
-        </p>
-        <section className="single">
-          <BarG data={glassWData} />
-        </section>
-      </main>
-    </AuthGuard>
+    <main className="breakdown__page">
+      <h1>Glass Recycling</h1>
+      <p>
+        Glass that is crushed or imploded and ready to be remelted is called
+        cullet. Glass doent have propotions since its all recyled similary.
+      </p>
+      <section className="single">
+        <BarG data={glassWData} />
+      </section>
+    </main>
   );
 }

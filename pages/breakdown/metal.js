@@ -6,11 +6,11 @@ export default function PlasticBreakdown() {
   const metalData = [
     {
       name: "Aluminium foil",
-      data: [23, 23, 25, 27],
+      data: [23, 25],
     },
     {
       name: "Metal can",
-      data: [215, 218, 219, 222],
+      data: [218, 219],
     },
   ];
   const metalWData = {
@@ -42,7 +42,7 @@ export default function PlasticBreakdown() {
         },
       },
       xaxis: {
-        categories: ["Jan", "Feb", "Mar", "Apr"],
+        categories: ["May", "Jun"],
         labels: {
           formatter: function (val) {
             return val + "Kg";
@@ -101,7 +101,7 @@ export default function PlasticBreakdown() {
         },
       },
       xaxis: {
-        categories: ["Jan", "Feb", "Mar", "Apr"],
+        categories: ["May", "Jun"],
       },
       yaxis: {
         title: {
@@ -127,21 +127,19 @@ export default function PlasticBreakdown() {
   };
 
   return (
-    <AuthGuard>
-      <main className="breakdown__page">
-        <h1>Metal Recycling</h1>
-        <p>
-          The metal recycling process is similar to the usual recycling process.
-          The metals are first sorted on the basis or their properties. It is,
-          however, important to have a basic understanding or knowledge about
-          metals. This will help in recycling them and keeping a green
-          environment.
-        </p>
-        <section>
-          <BarG data={metalWData} />
-          <BarG data={metalPData} />
-        </section>
-      </main>
-    </AuthGuard>
+    <main className="breakdown__page">
+      <h1>Metal Recycling</h1>
+      <p>
+        The metal recycling process is similar to the usual recycling process.
+        The metals are first sorted on the basis or their properties. It is,
+        however, important to have a basic understanding or knowledge about
+        metals. This will help in recycling them and keeping a green
+        environment.
+      </p>
+      <section>
+        <BarG data={metalWData} />
+        <BarG data={metalPData} />
+      </section>
+    </main>
   );
 }

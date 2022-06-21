@@ -382,27 +382,25 @@ export default function BreakdownPage() {
     },
   };
   return (
-    <AuthGuard>
-      <main className="breakdown__page">
-        <section>
-          <BarG data={plasticWData} />
-        </section>
-        <section>
-          <BarG data={plasticPData} />
-        </section>
-        <section>
-          <BarG data={metalWData} />
-        </section>
-        <section>
-          <BarG data={metalPData} />
-        </section>
-        <section>
-          <BarG data={paperWData} />
-        </section>
-        <section>
-          <BarG data={paperPData} />
-        </section>
-      </main>
-    </AuthGuard>
+    <main className="breakdown__page">
+      <section>
+        <BarG data={plasticWData} />
+      </section>
+      <section>
+        <BarG data={plasticPData} />
+      </section>
+      <section>
+        <BarG data={metalWData} />
+      </section>
+      <section>
+        <BarG data={metalPData} />
+      </section>
+      <section>
+        <BarG data={paperWData} />
+      </section>
+      <section>
+        <BarG data={paperPData} />
+      </section>
+    </main>
   );
 }

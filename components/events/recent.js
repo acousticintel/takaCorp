@@ -15,7 +15,6 @@ const contVar = {
   },
 };
 
-
 const slideVar = {
   hide: {
     opacity: 0,
@@ -41,7 +40,11 @@ export default function Recent({ events, company }) {
       <Title title="Recent Events" />
       <AnimatePresence initial="hide" animate="show" exit="hide">
         {events?.length < 1 && (
-          <motion.div variants={slideVar} className="flex items-center justify-center w-full" key="empty">
+          <motion.div
+            variants={slideVar}
+            className="flex items-center justify-center w-full"
+            key="empty"
+          >
             <h6 className="text-xl text-gray-500 my-20">
               There are currently no events
             </h6>
@@ -49,27 +52,28 @@ export default function Recent({ events, company }) {
         )}
         {events?.length > 0 && (
           <motion.div variants={contVar} className="list" key="not_empty">
-            {events.map((event) => (
-              <Link
-                href={`events/event?info=${JSON.stringify({
-                  company: company.id,
-                  event: event.id,
-                })}`}
-                key={event.id}
-              >
-                <motion.div variants={slideVar} className="event">
-                  <div className="event__img">
-                    <Image
-                      src={event.image}
-                      layout="fill"
-                      className="object-cover"
-                    />
-                  </div>
-                  <h6>{event.name}</h6>
-                  <span>{event.name}</span>
-                </motion.div>
-              </Link>
-            ))}
+            {events.map((event) => {
+              const urlParams =
+                "?" + new URLSearchParams({  company:company.id, name: event.name }).toString();
+              return (
+                <Link
+                  href={`events/event${urlParams}`}
+                  key={event.id}
+                >
+                  <motion.div variants={slideVar} className="event">
+                    <div className="event__img">
+                      <Image
+                        src={event.image}
+                        layout="fill"
+                        className="object-cover"
+                      />
+                    </div>
+                    <h6>{event.name}</h6>
+                    <span>{event.name}</span>
+                  </motion.div>
+                </Link>
+              );
+            })}
           </motion.div>
         )}
       </AnimatePresence>
