@@ -6,7 +6,7 @@ export default function GlassBreakdown() {
   const glassData = [
     {
       name: "Cullet",
-      data: [92, 93],
+      data: [468, 3],
     },
   ];
   const glassWData = {

@@ -6,11 +6,11 @@ export default function GlassBreakdown() {
   const nonrecData = [
     {
       name: "Organic",
-      data: [85, 90],
+      data: [11, 566],
     },
     {
       name: "Non recyclable",
-      data: [85, 90],
+      data: [85, 0],
     },
   ];
   const nonrecWData = {

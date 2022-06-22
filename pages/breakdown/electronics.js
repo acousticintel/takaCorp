@@ -6,19 +6,19 @@ export default function PlasticBreakdown() {
   const elecData = [
     {
       name: "Phones",
-      data: [3, 0],
+      data: [0,0],
     },
     {
       name: "Laptops/PC",
-      data: [3, 1],
+      data: [0,0],
     },
     {
       name: "Home Appliances",
-      data: [2, 3],
+      data: [0,0],
     },
     {
       name: "Other",
-      data: [6, 10],
+      data: [0,0],
     },
   ];
   const elecWData = {

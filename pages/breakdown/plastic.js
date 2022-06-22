@@ -6,23 +6,23 @@ export default function PlasticBreakdown() {
   const plasticData = [
     {
       name: "PET",
-      data: [130, 142],
+      data: [44, 1142],
     },
     {
       name: "LDPE",
-      data: [29, 32],
+      data: [2, 50],
     },
     {
       name: "HDPE",
-      data: [51, 53],
+      data: [3, 77],
     },
     {
       name: "PP",
-      data: [95, 99],
+      data: [6, 146],
     },
     {
       name: "PS",
-      data: [30, 38],
+      data: [2, 53],
     },
   ];
   const plasticWData = {
@@ -54,7 +54,7 @@ export default function PlasticBreakdown() {
         },
       },
       xaxis: {
-        categories: ["Jan", "Feb", "Mar", "Apr"],
+        categories: ["May", "Jun"],
         labels: {
           formatter: function (val) {
             return val + "Kg";
