@@ -12,6 +12,7 @@ export default function LineG({ events }) {
         Object.entries(event).map(([key, value]) => {
           if (
             key !== "name" &&
+            key !== "protected" &&
             key !== "location" &&
             key !== "timestamp" &&
             key !== "image" &&
