@@ -12,11 +12,11 @@ export default function CleanUpStats({total}) {
       <h5>{total} kg</h5>
     </div>
     <div className="stat">
-      <h6>Kg/sorter</h6>
+      <h6>Kgs sorted/ Participant</h6>
       <h5>73.49 kg</h5>
     </div>
     <div className="stat">
-      <h6>Kg/hr</h6>
+      <h6>Kgs sorted/ hour/ Participant</h6>
       <h5>29.5 kg</h5>
     </div>
   </div>
