@@ -99,7 +99,7 @@ export default function EventPage({ eventInit }) {
         </>
       </div>
       {eventData.name === "River Cleaning" && (
-        <div className="rounded-3xl my-3 flex gap-6 items-center justify-center">
+        <div className="rounded-3xl my-3 flex flex-wrap gap-6 items-center justify-center">
           <a
             className="btn btn-primary btn-lg rounded-2xl"
             download
@@ -112,7 +112,7 @@ export default function EventPage({ eventInit }) {
             download
             href="/files/Taka_Solutions.pdf"
           >
-            Download Tracking Doc.
+            Download Recycling Certificate.
           </a>
         </div>
       )}
