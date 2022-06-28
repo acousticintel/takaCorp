@@ -112,14 +112,17 @@ export default function EventPage({ eventInit }) {
             download
             href="/files/Taka_Solutions.pdf"
           >
-            Download Recycling Certificate.
+            Download Recycling Certificate
           </a>
         </div>
       )}
       {eventData?.protected ? (
         <AuthGuard>
           {eventData?.type === "cleanup" ? (
-            <CleanUpStats total={eventData?.total ? eventData.total : 0} />
+            <CleanUpStats
+              total={eventData?.total ? eventData.total : 0}
+              non={eventData?.non ? eventData.non : 0}
+            />
           ) : (
             <EventsStats total={eventData?.total ? eventData.total : 0} />
           )}
@@ -130,7 +133,10 @@ export default function EventPage({ eventInit }) {
       ) : (
         <>
           {eventData?.type === "cleanup" ? (
-            <CleanUpStats total={eventData?.total ? eventData.total : 0} />
+            <CleanUpStats
+              total={eventData?.total ? eventData.total : 0}
+              non={eventData?.non ? eventData.non : 0}
+            />
           ) : (
             <EventsStats total={eventData?.total ? eventData.total : 0} />
           )}
