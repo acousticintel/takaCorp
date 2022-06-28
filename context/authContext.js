@@ -31,7 +31,7 @@ function useProvideAuth() {
 
   useEffect(() => {
     if (session?.error === "RefreshAccessTokenError") {
-      signIn(); // Force sign in to hopefully resolve error
+      //signIn(); // Force sign in to hopefully resolve error
     }
   }, [session]);
 

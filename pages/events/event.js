@@ -61,7 +61,7 @@ export default function EventPage({ eventInit }) {
       </Head>
       <div className="flex flex-col sm:flex-row items-center justify-center">
         <div className="avatar">
-        <div className="w-24 mask mask-squircle">
+          <div className="w-24 mask mask-squircle">
             {eventData?.image && <Image src={eventData.image} layout="fill" />}
           </div>
         </div>
@@ -93,10 +93,29 @@ export default function EventPage({ eventInit }) {
           </div>
           <div className="detail">
             {" "}
-            <span> NEMA approval number: </span> <h6>{eventData?.nema ? eventData.nema : "NEMA/--/-/VOL.-----" }</h6>
+            <span> NEMA approval number: </span>{" "}
+            <h6>{eventData?.nema ? eventData.nema : "NEMA/--/-/VOL.-----"}</h6>
           </div>
         </>
       </div>
+      {eventData.name === "River Cleaning" && (
+        <div className="rounded-3xl my-3 flex gap-6 items-center justify-center">
+          <a
+            className="btn btn-primary btn-lg rounded-2xl"
+            download
+            href="/files/Nema_Letter.pdf"
+          >
+            Download Nema Letter
+          </a>
+          <a
+            className="btn btn-primary btn-lg rounded-2xl"
+            download
+            href="/files/Taka_Solutions.pdf"
+          >
+            Download Tracking Doc.
+          </a>
+        </div>
+      )}
       {eventData?.protected ? (
         <AuthGuard>
           {eventData?.type === "cleanup" ? (
