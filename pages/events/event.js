@@ -64,7 +64,9 @@ const images = [
 export default function EventPage({ eventInit }) {
   const router = useRouter();
   const { name, company } = router.query;
-  const [eventData, setEventData] = useState({});
+  const [eventData, setEventData] = useState(
+    eventInit ? JSON.parse(eventInit) : {}
+  );
 
   useEffect(() => {
     //console.log(eventData);

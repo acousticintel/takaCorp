@@ -1,8 +1,7 @@
 import Image from "next/image";
-import { useRouter } from "next/router";
 //custom pack
 import { motion } from "framer-motion";
-import { getSession, useSession } from "next-auth/react";
+import { useSession } from "next-auth/react";
 //custom
 import Stats from "../components/stats/totalStats";
 import LineG from "../components/graphSec/lineG";
@@ -19,7 +18,6 @@ import {
   collection,
   where,
 } from "firebase/firestore";
-import firebase from "firebase/compat/app";
 import "firebase/compat/firestore";
 import { db } from "../firebase";
 
@@ -49,13 +47,10 @@ const riseVar = {
   },
 };
 
-export default function Profile({ companyDataInit }) {
-  const router = useRouter();
+export default function Profile( ) {
   const { data: session } = useSession();
 
-  const [companyData, setCompanyData] = useState(
-    JSON.parse(companyDataInit) || {}
-  );
+  const [companyData, setCompanyData] = useState({});
 
   const [profile, setProfile] = useState("demo");
   const [eventsData, setEventsData] = useState({});
