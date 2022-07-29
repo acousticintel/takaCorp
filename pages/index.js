@@ -49,18 +49,15 @@ const riseVar = {
   },
 };
 
-export default function Profile({ userDataInit, companyDataInit }) {
+export default function Profile({ companyDataInit }) {
   const router = useRouter();
-  const { company } = router.query;
   const { data: session } = useSession();
 
-  const [userData, setUserData] = useState(
-    userDataInit ? JSON.parse(userDataInit) : {}
-  );
   const [companyData, setCompanyData] = useState(
-    companyDataInit && !company ? JSON.parse(companyDataInit) : {}
+    JSON.parse(companyDataInit) || {}
   );
 
+  const [profile, setProfile] = useState("demo");
   const [eventsData, setEventsData] = useState({});
   const [total, setTotal] = useState(0);
 
@@ -76,11 +73,7 @@ export default function Profile({ userDataInit, companyDataInit }) {
   const getCompanyData = async (company) => {
     const q = query(
       collection(db, "wasteProfiles"),
-      where(
-        "name",
-        "==",
-        company ? company : userData?.company ? userData.company : "demo"
-      ),
+      where("name", "==", company ? company : "demo"),
       limit(1)
     );
     return onSnapshot(q, (querySnapshot) => {
@@ -113,9 +106,12 @@ export default function Profile({ userDataInit, companyDataInit }) {
   };
 
   useEffect(() => {
-    //console.log("company", company);
-    getCompanyData(company);
-  }, [company]);
+    //console.log("company", companyData);
+  }, [companyData]);
+
+  useEffect(() => {
+    getCompanyData(profile);
+  }, [profile]);
 
   useEffect(() => {
     if (session?.user?.id) {
@@ -134,11 +130,6 @@ export default function Profile({ userDataInit, companyDataInit }) {
   }, [companyData]);
 
   useEffect(() => {
-    //console.log("eventData", userData);
-    //console.log("companyData", companyData);
-  }, [companyData, userData]);
-
-  useEffect(() => {
     if (eventsData?.length > 0) {
       let t = sumObjectsByKey(...eventsData);
       setTotal(t);
@@ -151,7 +142,14 @@ export default function Profile({ userDataInit, companyDataInit }) {
     if (company === "pernod") {
       return "Pernod Ricard";
     }
-    return "Demo";
+    return "Taka";
+  };
+
+  const companyImage = (company) => {
+    if (company === "pernod") {
+      return "/assets/pernod.png";
+    }
+    return "/assets/logo.png";
   };
 
   return (
@@ -161,17 +159,50 @@ export default function Profile({ userDataInit, companyDataInit }) {
       initial="hide"
       animate="show"
     >
-      <div className="flex flex-col items-center justify-center">
-        <div className="avatar">
-          <div className="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-            {companyData?.image && (
-              <Image src={companyData.image} layout="fill" />
-            )}
+      <h6 className="text-5xl font-semibold">Our Partners</h6>
+      <p className="text-lg text-gray-500 p-3">
+        Selecting one of our partners Logos to view their profile
+      </p>
+      <div className="grid gap-6 grid-cols-1 sm:grid-cols-2">
+        <div
+          onClick={() => setProfile("demo")}
+          className={`${
+            profile != "demo" ? "grayscale" : ""
+          }  transition-all duration-1000 ease-in-out`}
+        >
+          <div className="relative h-40 w-full max-w-sm mx-auto">
+            <Image src={"/assets/logo.png"} layout="fill" objectFit="contain" />
           </div>
+          <h5 className="text-center text-emerald-700 text-xl font-bold">
+            Taka Earth
+          </h5>
         </div>
-        <h1 className="text-2xl font-semibold my-2">
-          {companyName(companyData.name)} Waste Profile
-        </h1>
+        <div
+          onClick={() => setProfile("pernod")}
+          className={`${
+            profile != "pernod" ? "grayscale" : ""
+          }  transition-all duration-1000 ease-in-out`}
+        >
+          <div className="relative h-40 w-full max-w-sm mx-auto">
+            <Image src="/assets/pernod.png" layout="fill" objectFit="contain" />
+          </div>
+          <h5 className="text-center text-blue-900 text-xl font-bold">
+            Pernod Ricard
+          </h5>
+        </div>
+      </div>
+      <div className="flex items-center justify-center my-5 py-5 border-y">
+        <h6 className="text-xl text-gray-400 font-semibold">
+          Selected Profile : <br />
+          <span className="text-teal-800 text-2xl">{companyName(profile)}</span>
+        </h6>
+        <div className="relative w-24 h-24 rounded-full ml-6">
+          <Image
+            src={companyImage(profile)}
+            layout="fill"
+            objectFit="contain"
+          />
+        </div>
       </div>
       <Recent events={eventsData} company={companyData} />
       <Stats total={total?.total} non={total?.non} />
@@ -182,44 +213,3 @@ export default function Profile({ userDataInit, companyDataInit }) {
     </motion.div>
   );
 }
-export const getServerSideProps = async (context) => {
-  try {
-    const session = await getSession(context);
-
-    const q = query(
-      collection(db, "users"),
-      where("email", "==", session?.user?.email || ""),
-      limit(1)
-    );
-    const querySnapshot = await getDocs(q);
-    let tmpUser = {};
-    querySnapshot.forEach((doc) => {
-      // doc.data() is never undefined for query doc snapshots
-      tmpUser = { ...doc.data(), id: doc.id };
-    });
-
-    const q1 = query(
-      collection(db, "wasteProfiles"),
-      where("name", "==", tmpUser?.company || "demo"),
-      limit(1)
-    );
-    const querySnapshot1 = await getDocs(q1);
-    let tmpCompany = {};
-    querySnapshot1.forEach((doc) => {
-      // doc.data() is never undefined for query doc snapshots
-      tmpCompany = { ...doc.data(), id: doc.id };
-    });
-
-    return {
-      props: {
-        userDataInit: JSON.stringify(tmpUser),
-        companyDataInit: JSON.stringify(tmpCompany),
-      },
-    };
-  } catch (error) {
-    console.log(error);
-    return {
-      props: {},
-    };
-  }
-};

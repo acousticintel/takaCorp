@@ -97,7 +97,7 @@ function Navbar({ router }) {
                   className="flex-shrink-0 flex items-center font-extrabold text-4xl
               transition-all duration-200 ease-in-out mb-0.5"
                 >
-                  TAKA
+                  TAKA EARTH
                 </span>
               </div>
             </Link>

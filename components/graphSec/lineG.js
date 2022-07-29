@@ -71,6 +71,9 @@ export default function LineG({ events }) {
       chart: {
         height: "100%",
         type: "area",
+        zoom: {
+          enabled: false,
+        },
       },
       dataLabels: {
         enabled: false,
@@ -78,9 +81,9 @@ export default function LineG({ events }) {
       colors: [
         "#fb923c",
         "#14b8a6",
-        "#facc15",  
+        "#facc15",
         "#ef4444",
-        "#6b7280",  
+        "#6b7280",
         "#38bdf8",
         "#fb923c",
       ],

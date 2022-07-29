@@ -11,7 +11,7 @@
 }
 
 .dash__graph .icon{
-  @apply relative w-12 h-12 px-10;
+  @apply relative w-12 min-w-[40px] h-12;
 }
 
 .dash__graph h5{
@@ -23,7 +23,7 @@
 }
 
 .dash__graph section{
-  @apply flex items-center border-b rounded-none border-gray-200 py-3;
+  @apply flex items-center border-b border-dashed rounded-none border-gray-200 py-1;
 }
 
 .dash__graph .collapse-title {

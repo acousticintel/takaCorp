@@ -1,3 +1,8 @@
+import Head from "next/head";
+import Image from "next/image";
+import { useRouter } from "next/router";
+import { useState, useEffect } from "react";
+//custom packages
 import {
   collection,
   doc,
@@ -8,16 +13,53 @@ import {
   getDoc,
   getDocs,
 } from "firebase/firestore";
-import { useRouter } from "next/router";
-import { useState, useEffect } from "react";
 import { format } from "date-fns";
+//custom
+import { db } from "../../firebase";
 import { AuthGuard } from "../../components/elements/authGuard";
 import EventG from "../../components/graphSec/eventG";
 import EventsStats from "../../components/stats/eventStats";
-import { db } from "../../firebase";
 import CleanUpStats from "../../components/stats/cleanUpStats";
-import Head from "next/head";
-import Image from "next/image";
+import ImageGallery from "react-image-gallery";
+
+const images = [
+  {
+    original: "/assets/gallery/river/1.jpg",
+    thumbnail: "/assets/gallery/river/1.jpg",
+  },
+  {
+    original: "/assets/gallery/river/2.jpg",
+    thumbnail: "/assets/gallery/river/2.jpg",
+  },
+  {
+    original: "/assets/gallery/river/3.jpg",
+    thumbnail: "/assets/gallery/river/3.jpg",
+  },
+  {
+    original: "/assets/gallery/river/4.jpg",
+    thumbnail: "/assets/gallery/river/4.jpg",
+  },
+  {
+    original: "/assets/gallery/river/5.jpg",
+    thumbnail: "/assets/gallery/river/5.jpg",
+  },
+  {
+    original: "/assets/gallery/river/6.jpg",
+    thumbnail: "/assets/gallery/river/6.jpg",
+  },
+  {
+    original: "/assets/gallery/river/7.jpg",
+    thumbnail: "/assets/gallery/river/7.jpg",
+  },
+  {
+    original: "/assets/gallery/river/8.jpg",
+    thumbnail: "/assets/gallery/river/8.jpg",
+  },
+  {
+    original: "/assets/gallery/river/9.jpg",
+    thumbnail: "/assets/gallery/river/9.jpg",
+  },
+];
 
 export default function EventPage({ eventInit }) {
   const router = useRouter();
@@ -140,11 +182,15 @@ export default function EventPage({ eventInit }) {
           ) : (
             <EventsStats total={eventData?.total ? eventData.total : 0} />
           )}
-          <section>
+          <div className="bg-white rounded-2xl my-6 py-4 px-2">
             <EventG total={eventData} />
-          </section>
+          </div>
         </>
       )}
+      <div>
+        <h1 className="font-bold text-3xl">Event Gallery</h1>
+        <ImageGallery items={images} />
+      </div>
     </main>
   );
 }

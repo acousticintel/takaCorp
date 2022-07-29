@@ -22,16 +22,16 @@ export function AuthGuard({ children }) {
   // if auth initialized with a valid user show protected page
   if (status !== "loading" && !session) {
     return (
-      <div className="flex flex-col items-center justify-center h-full mt-20">
-        <h1 className="text-lg text-gray-500">
-          Please sign in to view this data
+      <div className="flex flex-col items-center max-w-md mx-auto justify-center h-full mt-20">
+        <h1 className="text-lg text-gray-400 font-semibold text-center">
+          To protect company data. Some information is only available to authorised users.
         </h1>
         <button
           onClick={handleClick}
           className="btn bg-primary rounded-full my-2"
         >
           {" "}
-          Sign In
+          Click here to sign In
         </button>
       </div>
     );
